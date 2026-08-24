@@ -1,46 +1,48 @@
-# Simulador de Ruleta de Casino 🎰
-## Descripción 
-Este es un simulador de ruleta de casino escrito en Bash que implementa dos técnicas populares de apuestas: 
+# Casino Roulette Betting Strategy Simulator 🎰
 
-- **Martingala**: Duplicación automática de la apuesta tras una pérdida.
-- **Inverse Labouchere**: Gestión de secuencias de apuestas con un tope renovable.
+A mathematical Monte Carlo style roulette simulator written in pure Bash that models betting algorithms to analyze capital volatility and demonstrate probability theory against the house edge.
 
-El programa permite simular diferentes estrategias de apuestas y analizar sus resultados, incluyendo estadísticas detalladas como el número total de jugadas, lista de números perdedores y máximas ganancias alcanzadas. 
-El proposito es intentar demostrar la utilidad de las tecnicas, visualizar posibles escenarios y observar como la casa siempre gana
+## Implemented Strategies
 
----
-
-## ✨ Características
-
-### Martingala:
-- Apostar continuamente a **par/impar**.
-- Duplicación automática de la apuesta tras una pérdida.
-- Estadísticas al final de la simulación:
-  - Número total de jugadas.
-  - Lista de números perdedores.
-  - Máxima cantidad ganada.
-
-### Inverse Labouchere:
-- Implementación de secuencia de apuestas modificable.
-- Tope de ganancias configurable para renovar la secuencia.
-- Ajuste automático del tope cuando se alcanza un mínimo crítico.
-- Estadísticas adicionales:
-  - Secuencia máxima alcanzada.
-  - Evolución de la secuencia durante el juego.
- 
----
-
-## 🎲 Uso 
-`./SimuladorRuletaCasino.sh -m [dinero] -t [tecnica]`
-### Parámetros
-- -m: Cantidad de dinero a apostar
-- -t: Tecnica a emplear (martingala o inverseLabrouchere)
-- -h: Panel de ayuda
+- **Martingale Strategy:** Exponentially doubles the wager following every loss until a win resets the bet to its base value.
+- **Reverse Labouchere (Split Martingale):** Manages dynamic positive-progression betting sequences with automated profit ceilings and risk-mitigation floor adjustments.
 
 ---
 
-## 📖 Notas importantes 
-- El programa utiliza colores para mejorar la visualización de los resultados.
-- La simulación se ejecuta automáticamente hasta que se agota el dinero disponible.
-- Se puede terminar la ejecución en cualquier momento con CTRL+C.
-     
+## ✨ Features
+
+### Martingale Simulation:
+- Continuous betting on even-money propositions (**even/odd**).
+- Automatic bankroll calculation and bet doubling.
+- Post-simulation metrics:
+  - Total rounds played before bankruptcy.
+  - History of consecutive losing numbers.
+  - Peak bankroll balance reached.
+
+### Reverse Labouchere:
+- Dynamic array sequence manipulation (`[1 2 3 4]`).
+- Configurable profit threshold to trigger sequence resets.
+- Dynamic ceiling re-adjustments when reaching critical drawdowns.
+- Sequence tracking:
+  - Maximum sequence expansion recorded.
+  - Real-time sequence adjustments per spin.
+
+---
+
+## 🎲 Usage
+
+```bash
+chmod +x casino_roulette_simulator.sh
+./casino_roulette_simulator.sh -m [initial_balance] -t [strategy]
+```
+### Parameters
+- -m: Initial bankroll amount.
+- -t: Strategy to execute (martingale or inverseLabouchere).
+- -h: Show help panel.
+## Example 
+`./casino_roulette_simulator.sh -m 500 -t martingale`
+
+## Operational Notes
+- Incorporates ANSI terminal formatting for readability.
+- Loops autonomously until bankroll depletion (balance <= 0).
+- Supports graceful termination via SIGINT (Ctrl+C).
