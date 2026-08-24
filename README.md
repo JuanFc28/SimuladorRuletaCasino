@@ -42,6 +42,11 @@ chmod +x casino_roulette_simulator.sh
 ## Example 
 `./casino_roulette_simulator.sh -m 500 -t martingale`
 
+<img width="985" height="671" alt="casino_beginning" src="https://github.com/user-attachments/assets/543af2d3-4c79-493b-9cfb-11cb979385d4" />
+
+<img width="885" height="596" alt="casino_ending" src="https://github.com/user-attachments/assets/d0371718-78bf-4b19-beec-d9c7371ee7e5" />
+
+
 ## Operational Notes
 - Incorporates ANSI terminal formatting for readability.
 - Loops autonomously until bankroll depletion (balance <= 0).
